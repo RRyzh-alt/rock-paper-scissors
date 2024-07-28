@@ -11,7 +11,18 @@
   console.log(answer)
 }
 
-computerChoice();
-computerChoice();
-computerChoice();
+function getHumanChoice(answer) {
+    let result = prompt("Rock, Paper or Scissors?");
+     if (result === "Rock" || result === "rock") {
+        answer = "Rock"; alert("You chose rock. A faithful choice!");
+     } else if (result === "Paper" || result === "paper") {
+        answer = "Paper"; alert("You chose paper. Doesn't paper always win?");
+     } else if (result === "Scissors" || result === "scissors") {
+        answer = "Scissors"; alert("You chose scissors. An fine tool, not to be overlooked!");
+     }
+     else alert("Please give a valid answer")
+     console.log(answer)
+}
+
+getHumanChoice()
 
