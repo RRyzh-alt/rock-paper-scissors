@@ -1,5 +1,54 @@
+// Create a function for playing a game 
+//   while human score and computer score is less than 5 
+//     invoke function to get computer choice
+//     invoke function to get human choice
+//     invoke function to play a round
+//     
+//     invoke playAgain 
+
 let humanScore = 0;
 let computerScore = 0;
+
+
+function playGame() {
+    while (humanScore < 5 && computerScore < 5) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
+    playAgain();
+}   
+// Create function called playAgain containing prompt human "do you want to play another game?", yes or no? return answer as lowercase.
+//     create variable containing prompt answer called answer
+//     if answer is exactly equal to "yes" 
+//     human score = 0 computer score = 0
+//       invoke play game function
+//     else if answer is exactly equal to "no"
+//       display message "Thank you for playing! You can close the tab to exit the game."
+//     else 
+//       display message "please answer 'yes or no'."
+//       return playAgain
+
+function playAgain() {
+    let answer = prompt("Would you like to play another game?", " (yes or no)");
+    if (answer === null) {
+        alert("Please enter your answer");
+        return playAgain();
+    }
+
+    answer = answer.toLowerCase();
+    
+    if (answer === "yes") {
+     computerScore = 0;
+     humanScore = 0;
+     playGame();
+    } else if (answer === "no") {
+         alert("Thank you for playing! You can close the tab to exit the game.");
+    } else {
+         alert("Please answer yes or no");
+         return playAgain();
+    }
+}
 
 function getComputerChoice() {
     let result;
@@ -14,8 +63,15 @@ function getComputerChoice() {
     return result;
 }
 
+
 function getHumanChoice() {
-    let result = prompt("Rock, Paper or Scissors?").toLowerCase(8);
+    let result = prompt("Rock, Paper or Scissors?");
+     if (result === null) {
+        alert("Please enter your answer");
+        return getHumanChoice();
+     }
+
+     result = result.toLowerCase();
     
      if (result === "rock") {
         alert("You chose rock. A faithful choice!");
@@ -31,8 +87,7 @@ function getHumanChoice() {
         return getHumanChoice();
     }
 }
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+
 
 
 // Create function containing human choice and computer choice
@@ -73,9 +128,9 @@ function playRound(humanChoice, computerChoice) {
     } else if (humanChoice === computerChoice) {
         console.log("It's a draw!");
     }
-    console.log("Computer chose: " + computerSelection);
-    console.log("You chose: " + humanSelection);
+    console.log("Computer chose: " + computerChoice);
+    console.log("You chose: " + humanChoice);
     console.log("Your Score: " + humanScore, "Computer Score: " + computerScore);
 }
 
-playRound(humanSelection, computerSelection);
+playGame();
