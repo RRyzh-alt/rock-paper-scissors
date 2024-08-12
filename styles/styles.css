@@ -1,0 +1,7 @@
+#play-again {
+    visibility: hidden;
+    background-color: pink;
+    font-family: Arial, Helvetica, sans-serif;  
+    width: 300px;
+    height: 150px;
+}
